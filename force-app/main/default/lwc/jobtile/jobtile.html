@@ -1,0 +1,40 @@
+<template>
+    <div class="tileClass">
+        <div class="job-content-class">
+           <lightning-card>
+            <article class="slds-card">
+              <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                  <div class="slds-media__figure header-content">
+                    <img src={job.ImageURL__c}> 
+                  </div>
+                  <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                      <a href="#" class="slds-card__header-link" title={job.Position__c}>
+                        {job.Position__c}
+                      </a>
+                    </h2>
+                  </div>
+                  <div class="slds-p-around_medium lgc-bg slds-no-flex" slot="title">
+                    <lightning-button-menu alternative-text="Show menu" menu-alignment="auto">
+                        <lightning-menu-item value="MenuItemOne" label={isJobSaved} onclick={selectJob}></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemTwo" label="Apply" onclick={selectJob}></lightning-menu-item>
+                        <lightning-menu-item value="MenuItemThree" label="Not Interested" onclick={selectJob}></lightning-menu-item>
+                        
+                    </lightning-button-menu>
+                  </div>
+                </header>
+              </div>
+              <div class="slds-card__body slds-card__body_inner" part="card">
+                <h4><strong>Experience level : </strong>{job.Experience_Level__c}</h4>
+                <h4><strong>Job Category : </strong>{job.Job_Category__c}</h4>
+              </div>
+              <div class="slds-card__body slds-card__body_inner slds-line-clamp_small content">{description}</div>
+              <div class="slds-card__body slds-card__body_inner slds-text-align_right">
+                <a onclick={viewMore}>{linkName}</a>
+              </div>
+            </article> 
+           </lightning-card>
+        </div>
+    </div>
+</template>

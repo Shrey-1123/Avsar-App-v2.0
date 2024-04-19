@@ -1,0 +1,55 @@
+<template>
+    
+    <div class="header">
+        <div class="header-right">
+          <div class="header-right search">
+            <c-candidatelwc></c-candidatelwc>
+          </div>
+          <a  href="#home" name="home" onclick={handleNavigation}>Home</a>
+          <a if:false={isGuestUser} name="appliedjob" href="#Applied Jobs" onclick={handleNavigation}>Applied Jobs</a>
+          <a  href="#about" name="about" onclick={handleNavigation}>About</a>
+          <a  href="#contact" name="contact" onclick={handleNavigation}>Contact</a>
+          <div if:true={isGuestUser} class="avatar header-right" >
+            <lightning-avatar name="avatar" variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg" initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver" class="slds-m-right_small" onmouseover={togglePopoverVisibilityonMouseOver} onmouseout={togglePopoverVisibilityonMouseOut} ></lightning-avatar>
+            <div class="popover" if:true={popovervisible}>
+                <section  aria-describedby="dialog-body-id-112" aria-labelledby="dialog-heading-id-117" class="slds-popover slds-nubbin_top-right slds-popover_small slds-popover_prompt_top-right" role="dialog" style="margin-top: 44px;margin-right: 5px;">
+                    <div class="slds-popover__body" id="dialog-body-id-112">
+                      <div class="slds-media">
+                        <div class="slds-media__body">
+                          <header class="slds-popover__header">
+                            <h2 class="slds-text-heading_small" id="dialog-heading-id-117">Please Login</h2>
+                          </header>
+                          <ul>
+                            <li><lightning-formatted-url value="#" label="Login" target="_blank" onclick={handleLogin}></lightning-formatted-url></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+            </div>
+        </div>
+          <div if:false={isGuestUser} class="avatar header-right" >
+            <lightning-avatar name="avatar" variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg" initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver" class="slds-m-right_small" onmouseover={togglePopoverVisibilityonMouseOver} onmouseout={togglePopoverVisibilityonMouseOut} ></lightning-avatar>
+            <div class="popover" if:true={popovervisible}>
+                <section  aria-describedby="dialog-body-id-112" aria-labelledby="dialog-heading-id-117" class="slds-popover slds-nubbin_top-right slds-popover_small slds-popover_prompt_top-right" role="dialog" style="margin-top: 44px;margin-right: 5px;" >
+                    <div class="slds-popover__body" id="dialog-body-id-113">
+                      <div class="slds-media">
+                        <div class="slds-media__body">
+                          <header class="slds-popover__header">
+                            <h2 class="slds-text-heading_small" id="dialog-heading-id-118">Header title</h2>
+                          </header>
+                          <ul>
+                            <li><lightning-formatted-url value="#" label="View Profile" target="_blank" onclick={handleProfileVisibilty}></lightning-formatted-url></li>
+                            <li><lightning-formatted-url value={logoutlink} label="Log Out" ></lightning-formatted-url></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+            </div>
+        </div>
+
+        </div>   
+    </div>
+   
+</template>

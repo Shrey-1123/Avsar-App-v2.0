@@ -1,0 +1,59 @@
+<template>
+    <div class="filtercontainer" if:true={isVisible}>
+        <h3>Apply Filters</h3>
+        <div if:true={jobfilter} class="button1-resetjobfilters">
+            <lightning-button
+                label="Job Category Filter"
+                icon-name="utility:close"
+                onclick={togglejobFilter}
+            ></lightning-button>
+        </div>
+        <div if:true={expfilter} class="button2-resetexpereincefilters">
+            <lightning-button
+                label="Experience Filter"
+                icon-name="utility:close"
+                onclick={toggleexpFilter}
+            ></lightning-button>
+        </div>
+        <div if:true={sortfilter} class="button3-resetsortfilters">
+            <lightning-button
+                label="Sorting Filters"
+                icon-name="utility:close"
+                onclick={togglesortFilter}
+            ></lightning-button>
+        </div>
+        <div if:true={resetAllfilter} class="button3-resetsortfilters">
+            <lightning-button
+                label="Reset All Filters"
+                icon-name="utility:close"
+                onclick={toggleresetAllFilter}
+            ></lightning-button>
+        </div>
+
+        <lightning-accordion allow-multiple-sections-open
+                             onsectiontoggle={handleSectionToggle}
+                             active-section-name={activeSections}>
+            <lightning-accordion-section name="jobcategory" label="Job Category">
+                <lightning-checkbox-group name="Checkbox Group1"
+                options={jobcategoryoptions}
+                value={jobcategoryvalues}
+                onchange={handleJobFiltersChange}></lightning-checkbox-group>
+                
+            </lightning-accordion-section>
+    
+            <lightning-accordion-section name="experiencelevel" label="Experience level">
+                <lightning-checkbox-group name="Checkbox Group2"
+                options={expereincefilteroptions}
+                value={experiencefiltervalues}
+                onchange={handleExperienceFiltersChange}></lightning-checkbox-group>
+            </lightning-accordion-section>
+    
+            <!--<lightning-accordion-section name="sortby" label="Sort By">
+                <lightning-checkbox-group name="Checkbox Group3"
+                options={sortbyfilteroptions}
+                value={sortbyfiltervalues}
+                onchange={handleSortByFiltersChange}></lightning-checkbox-group>
+            </lightning-accordion-section>-->
+        </lightning-accordion> 
+    </div>
+</template>

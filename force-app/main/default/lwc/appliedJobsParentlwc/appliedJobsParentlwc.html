@@ -1,0 +1,9 @@
+<template>
+    <div if:true={isGuestUser}>
+        Please login to view Your Applied Jobs
+    </div>
+    <div if:false={isGuestUser}>
+        <p>Display applied jobs</p>
+    </div>
+    
+</template>
