@@ -1,0 +1,46 @@
+<template>
+    <div if:true={isVisible}>
+        <lightning-tabset variant="scoped">
+            <lightning-tab label="Searched Jobs">
+                <template if:true={jobs}>
+                    <div class="slds-scrollable_y">
+                    <!--<lightning-datatable
+                    key-field="Id"
+                    data={jobs}
+                    columns={columns}
+                    hide-checkbox-column
+                    onrowclick={handleRowClick}
+                    ></lightning-datatable>-->
+                    <!-- layout allowing multiple rows -->
+                    <lightning-layout multiple-rows="true" class="slds-grid">
+                        <!-- template looping through each job -->
+                    <template for:each={jobs} for:item="job">
+                    <!-- lightning-layout-item for each job -->
+                    <lightning-layout-item class={tileSize} key={job.Id} padding="around-small">
+                      <!-- Each JobTile goes here -->
+                      <c-jobtile job={job} onjobselect={navigateToSelectedJob} selected-job-id={selectedJobId}></c-jobtile>
+                    </lightning-layout-item>
+                
+                  </template>
+                    </lightning-layout>
+                </div>
+                </template>
+            </lightning-tab>     
+        </lightning-tabset>
+        
+        <br/>
+        <div class="slds-align_absolute-center">
+            <div class="slds-p-right_xx-small">
+                <lightning-button label="Previous" disabled={isPrev} onclick={handlePrev} variant="brand"
+                    icon-name="utility:chevronleft" name="prev"></lightning-button>
+            </div>
+            <span class="slds-badge slds-badge_lightest">
+                {recordStart}-{recordEnd} of {totalRecords} | Page {pageNumber} of {totalPages}
+            </span>
+            <div class="slds-p-left_xx-small">
+                <lightning-button label="Next" disabled={isNext} onclick={handleNext} variant="brand"
+                    icon-name="utility:chevronright" icon-position="right" name="next"></lightning-button>
+            </div>
+        </div>
+    </div>
+</template>
